@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="aaa"></div>
+<button id="click">
+ 试一试
+</button>
+<div class="container">
+
+</div>
+<script src="dist/js/a.bundle.js"></script>
+<script src="dist/js/b.bundle.js"></script>
+<script src="dist/js/c.bundle.js"></script>
+<script src="dist/js/e.bundle.js"></script>
+<script src="dist/js/d.bundle.js"></script>
+<script>
+  let dj = new Dj({
+    el: '#aaa',
+    template: `
+    <div id="id" class="class">
+      <div id="a" class="b" style="height: 500px; width: 500px">
+        {{a+b}} + {{c}}
+      </div>
+      {{a*b}}
+    </div>
+`,
+    data: {
+      a: 12,
+      b: 2,
+      c: 3
+    },
+    callback: function () {
+      console.log('回调啦')
+    }
+  })
+  // dj.a = 'a'
+  let click = document.getElementById('click')
+  click.addEventListener('click', () => {
+    dj.a = 55
+  })
+  console.log(dj)
+  /*let refresh = new Refresh('.container', 60, 60, {
+    top: '15px',
+    left: 0
+  })
+  let speed = 15
+  refresh.render()
+  setInterval(() => {
+    speed += 5
+    let distance = Math.max(Math.min(speed, 70), 0)
+    refresh.renderRefresh('move', 15, '#1c86d1', 2, ((Math.PI * 1.5 / 70) * Math.abs(distance)), 4, 4)
+  }, 100) */
+</script>
+</body>
+</html>
